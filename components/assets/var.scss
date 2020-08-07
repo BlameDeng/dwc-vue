@@ -1,0 +1,32 @@
+$dwc-green: #56aa1c;
+$dwc-blue: #008be1;
+$dwc-yellow: #ffcf00;
+$dwc-orange: #ff6600;
+$dwc-red: #cc0000;
+
+$dwc-green-highlight: lighten($dwc-green, 10%);
+$dwc-blue-highlight: lighten($dwc-blue, 10%);
+$dwc-yellow-highlight: lighten($dwc-yellow, 10%);
+$dwc-orange-highlight: lighten($dwc-orange, 10%);
+$dwc-red-highlight: lighten($dwc-red, 10%);
+
+$dwc-green-shade: darken($dwc-green, 10%);
+$dwc-blue-shade: darken($dwc-blue, 10%);
+$dwc-yellow-shade: darken($dwc-yellow, 10%);
+$dwc-orange-shade: darken($dwc-orange, 10%);
+$dwc-red-shade: darken($dwc-red, 10%);
+
+$dwc-title: #262626;
+$dwc-main: #595959;
+$dwc-secondary: #8c8c8c;
+$dwc-disable: #bfbfbf;
+$dwc-border: #d9d9d9;
+$dwc-divider: #f0f0f0;
+
+$dwc-background: #f5f5f5;
+$dwc-background-hover: darken($dwc-background, 10%);
+$dwc-background-selected: lighten($dwc-blue, 50%);
+$dwc-table-header: #fafafa;
+
+$dwc-shadow: 0px 1px 5px rgba(0, 0, 0, 0.23921568627451);
+$dwc-transition: 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
