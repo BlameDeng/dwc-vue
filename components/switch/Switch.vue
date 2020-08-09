@@ -3,7 +3,7 @@
     class="dwc-switch"
     :class="{
       checked: value,
-      mini: mini === true || mini === 'true',
+      [size]: true,
       disabled: disabled === true || disabled === 'true',
     }"
     @click="onClick"
@@ -15,9 +15,9 @@
 export default {
   name: "Switch",
   props: {
-    value: { type: Boolean, required: true },
-    mini: [Boolean, String],
     disabled: [Boolean, String],
+    size: { type: String, default: "default" },
+    value: { type: Boolean, required: true },
   },
   setup(props, context) {
     const onClick = (ev: MouseEvent) => {
@@ -47,7 +47,7 @@ export default {
   transition: background-color $dwc-transition;
   position: relative;
 
-  &.mini {
+  &.small {
     width: 28px;
     height: 16px;
 
@@ -65,7 +65,7 @@ export default {
       left: 22px;
     }
 
-    &.mini {
+    &.small {
       > .dwc-switch-inner {
         left: 12px;
       }

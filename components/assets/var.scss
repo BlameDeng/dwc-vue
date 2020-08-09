@@ -24,7 +24,8 @@ $dwc-border: #d9d9d9;
 $dwc-divider: #f0f0f0;
 
 $dwc-background: #f5f5f5;
-$dwc-background-hover: darken($dwc-background, 10%);
+$dwc-background-hover: darken($dwc-background, 2.5%);
+$dwc-background-disable: darken($dwc-background, 5%);
 $dwc-background-selected: lighten($dwc-blue, 50%);
 $dwc-table-header: #fafafa;
 
