@@ -104,16 +104,43 @@
         v-model:value="value14"
       />
     </div>
+    <div class="row">
+      <TextArea v-model:value="value15" :cols="50" :rows="8" />
+    </div>
+    <div class="row">
+      <TextArea cols="50" rows="8" v-model:value="value16" :autosize="true" />
+    </div>
+    <div class="row">
+      <TextArea
+        :style="{ width: '250px', height: '100px' }"
+        v-model:value="value17"
+        :disabled="true"
+      />
+    </div>
+    <div class="row">
+      <TextArea
+        :style="{ width: '250px', height: '100px' }"
+        v-model:value="value18"
+        :readonly="true"
+      />
+    </div>
+    <div class="row">
+      <TextArea
+        :style="{ width: '250px', height: '100px' }"
+        v-model:value="value19"
+        :error="true"
+      />
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { ref, watchEffect } from "vue";
 
-import { Input, Password } from "../../components";
+import { Input, Password, TextArea } from "../../components";
 
 export default {
   name: "InputDemo",
-  components: { Input, Password },
+  components: { Input, Password, TextArea },
   setup() {
     const value1 = ref("");
     const value2 = ref("");
@@ -129,6 +156,11 @@ export default {
     const value12 = ref("20");
     const value13 = ref("#ffffff");
     const value14 = ref("");
+    const value15 = ref("");
+    const value16 = ref("");
+    const value17 = ref("Disabled");
+    const value18 = ref("Readonly");
+    const value19 = ref("Error");
 
     const onClear = () => {
       value8.value = "";
@@ -149,6 +181,11 @@ export default {
       value12,
       value13,
       value14,
+      value15,
+      value16,
+      value17,
+      value18,
+      value19,
       onClear,
     };
   },
