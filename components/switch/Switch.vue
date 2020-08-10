@@ -16,13 +16,11 @@ export default {
   name: "Switch",
   props: {
     disabled: [Boolean, String],
-    size: { type: String, default: "default" },
+    size: { type: String, default: "middle" },
     value: { type: Boolean, required: true },
   },
   setup(props, context) {
     const onClick = (ev: MouseEvent) => {
-      context.emit("click", ev);
-
       if (!props.disabled) {
         context.emit("update:value", !props.value);
       }

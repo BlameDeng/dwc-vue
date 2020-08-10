@@ -54,7 +54,7 @@ export default {
     iconName: String,
     iconSize: { type: [Number, String], default: "1em" },
     loading: [Boolean, String],
-    size: { type: String, default: "default" },
+    size: { type: String, default: "middle" },
     target: String,
     type: { type: String, default: "default" },
   },
