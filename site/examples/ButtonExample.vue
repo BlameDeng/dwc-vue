@@ -35,14 +35,14 @@
       </Button>
     </div>
     <div class="row">
-      <Button :style="{ marginRight: '8px' }" :size="size" iconName="settings">
+      <Button :style="{ marginRight: '8px' }" :size="size" icon-name="settings">
         Settings
       </Button>
       <Button
         :style="{ marginRight: '8px' }"
         type="primary"
         :size="size"
-        iconName="airplane"
+        icon-name="airplane"
       >
         Airplane
       </Button>
@@ -50,11 +50,11 @@
         :style="{ marginRight: '8px' }"
         :disabled="true"
         :size="size"
-        iconName="import"
+        icon-name="import"
       >
         Import
       </Button>
-      <Button type="primary" disabled="true" :size="size" iconName="export">
+      <Button type="primary" disabled="true" :size="size" icon-name="export">
         Export
       </Button>
     </div>
@@ -62,7 +62,7 @@
       <Button
         :style="{ marginRight: '8px' }"
         :size="size"
-        iconName="settings"
+        icon-name="settings"
         :danger="true"
       >
         Settings
@@ -71,7 +71,7 @@
         :style="{ marginRight: '8px' }"
         type="primary"
         :size="size"
-        iconName="airplane"
+        icon-name="airplane"
         :danger="true"
       >
         Airplane
@@ -80,7 +80,7 @@
         :style="{ marginRight: '8px' }"
         :disabled="true"
         :size="size"
-        iconName="import"
+        icon-name="import"
         danger="true"
       >
         Import
@@ -89,7 +89,7 @@
         type="primary"
         disabled="true"
         :size="size"
-        iconName="export"
+        icon-name="export"
         danger="true"
       >
         Export
@@ -121,7 +121,7 @@
     </div>
     <div class="row">
       <Button
-        iconName="cursor"
+        icon-name="cursor"
         type="primary"
         :loading="loading"
         @click="toggleLoading"

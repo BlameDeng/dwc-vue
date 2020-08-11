@@ -36,9 +36,9 @@
       <Input
         v-model:value="value8"
         :error="!!value8"
-        prefixIconName="lock"
-        suffixIconName="close"
-        suffixIconStyle="cursor:pointer;"
+        prefix-icon-name="lock"
+        suffix-icon-name="close"
+        suffix-icon-style="cursor:pointer;"
         placeholder="Input..."
         @click-suffix="onClear"
       />
@@ -68,11 +68,7 @@
         type="range"
         v-model:value="value12"
       />
-      <Input
-        :style="{ marginRight: '8px' }"
-        type="color"
-        v-model:value="value13"
-      />
+      <Input :style="{ width: '120px' }" type="color" v-model:value="value13" />
     </div>
     <div class="row">
       <Input
@@ -92,7 +88,7 @@
       />
       <Input
         :disabled="true"
-        :style="{ marginRight: '8px' }"
+        :style="{ width: '120px' }"
         type="color"
         value="#ffffff"
       />
@@ -134,7 +130,7 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, watchEffect } from "vue";
+import { ref } from "vue";
 
 import { Input, Password, TextArea } from "../../components";
 
@@ -165,10 +161,6 @@ export default {
     const onClear = () => {
       value8.value = "";
     };
-
-    watchEffect(() => {
-      console.log(value9.value);
-    });
 
     return {
       value1,

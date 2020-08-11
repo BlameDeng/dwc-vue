@@ -1,10 +1,12 @@
 <template>
-  <div class="dwc-tab-pane">
+  <div class="dwc-tab-pane" v-if="activeTabName === name">
     <slot></slot>
   </div>
 </template>
 <script lang="ts">
-import { watchEffect } from "vue";
+import { inject } from "vue";
+
+import { DWCTabsActiveTabName } from "./Tabs.vue";
 
 export default {
   name: "TabPane",
@@ -12,15 +14,12 @@ export default {
   props: {
     disabled: { type: [Boolean, String], default: false },
     label: { type: String, required: true },
-    name: { type: String, required: true },
-    _activeName: String,
+    name: { type: [Number, String], required: true },
   },
   setup(props, context) {
-    watchEffect(() => {
-      console.log(props._activeName);
-    });
+    const activeTabName = inject(DWCTabsActiveTabName);
 
-    return {};
+    return { activeTabName };
   },
 };
 </script>

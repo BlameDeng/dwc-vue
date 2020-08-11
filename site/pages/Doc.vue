@@ -1,9 +1,9 @@
 <template>
+  <TabsExample />
   <ButtonExample />
   <IconExample />
   <InputExample />
   <SwitchExample />
-  <TabsExample />
 </template>
 <script lang="ts">
 import ButtonExample from "../examples/ButtonExample.vue";
