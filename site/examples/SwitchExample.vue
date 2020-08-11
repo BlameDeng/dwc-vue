@@ -20,7 +20,7 @@ import { ref } from "vue";
 import { Switch } from "../../components";
 
 export default {
-  name: "SwitchDemo",
+  name: "SwitchExample",
   components: { Switch },
   setup() {
     const value1 = ref(false);

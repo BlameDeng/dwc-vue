@@ -7,11 +7,7 @@
       error: error === true || error === 'true',
       disabled: disabled === true || disabled === 'true',
     }"
-    :cols="cols"
     :disabled="disabled === true || disabled === 'true'"
-    :placeholder="placeholder"
-    :readonly="readonly === true || readonly === 'true'"
-    :rows="rows"
     ref="el"
     :value="value"
     @input="onInput"
@@ -27,12 +23,8 @@ export default {
   props: {
     autosize: [Boolean, String],
     bordered: { type: [Boolean, String], default: true },
-    cols: [Number, String],
     disabled: [Boolean, String],
     error: [Boolean, String],
-    placeholder: { type: String, default: "" },
-    readonly: [Boolean, String],
-    rows: [Number, String],
     value: String,
   },
   setup(props, context) {
@@ -61,7 +53,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/var.scss";
 
 .dwc-text-area {

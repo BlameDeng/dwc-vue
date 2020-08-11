@@ -15,7 +15,7 @@
 import { Icon } from "../../components";
 
 export default {
-  name: "IconDemo",
+  name: "IconExample",
   components: { Icon },
 };
 </script>

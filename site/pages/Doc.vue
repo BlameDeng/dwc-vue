@@ -1,18 +1,26 @@
 <template>
-  <ButtonDemo />
-  <IconDemo />
-  <InputDemo />
-  <SwitchDemo />
+  <ButtonExample />
+  <IconExample />
+  <InputExample />
+  <SwitchExample />
+  <TabsExample />
 </template>
 <script lang="ts">
-import ButtonDemo from "../demos/ButtonDemo.vue";
-import IconDemo from "../demos/IconDemo.vue";
-import InputDemo from "../demos/InputDemo.vue";
-import SwitchDemo from "../demos/SwitchDemo.vue";
+import ButtonExample from "../examples/ButtonExample.vue";
+import IconExample from "../examples/IconExample.vue";
+import InputExample from "../examples/InputExample.vue";
+import SwitchExample from "../examples/SwitchExample.vue";
+import TabsExample from "../examples/TabsExample.vue";
 
 export default {
   name: "Doc",
-  components: { ButtonDemo, IconDemo, InputDemo, SwitchDemo },
+  components: {
+    ButtonExample,
+    IconExample,
+    InputExample,
+    SwitchExample,
+    TabsExample,
+  },
   setup(props) {},
 };
 </script>

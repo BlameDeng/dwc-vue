@@ -148,7 +148,7 @@ import { ref } from "vue";
 import { Button } from "../../components";
 
 export default {
-  name: "ButtonDemo",
+  name: "ButtonExample",
   components: { Button },
   setup() {
     const size = ref("middle");

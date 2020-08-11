@@ -79,7 +79,7 @@
         :disabled="true"
         :style="{ marginRight: '8px' }"
         type="radio"
-        :checked="false"
+        :checked="true"
       />
       <Input
         :disabled="true"
@@ -139,7 +139,7 @@ import { ref, watchEffect } from "vue";
 import { Input, Password, TextArea } from "../../components";
 
 export default {
-  name: "InputDemo",
+  name: "InputExample",
   components: { Input, Password, TextArea },
   setup() {
     const value1 = ref("");
@@ -165,6 +165,10 @@ export default {
     const onClear = () => {
       value8.value = "";
     };
+
+    watchEffect(() => {
+      console.log(value9.value);
+    });
 
     return {
       value1,

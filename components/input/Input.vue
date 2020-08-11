@@ -10,7 +10,7 @@
       [type]: true,
       [size]: true,
     }"
-    :style="{ width: inputWidth }"
+    :style="labelStyle"
   >
     <Icon
       v-if="prefixIconName"
@@ -22,17 +22,22 @@
     />
     <input
       class="dwc-input-el"
+      :class="{
+        bordered: bordered === true || bordered === 'true',
+        error: error === true || error === 'true',
+        disabled: disabled === true || disabled === 'true',
+        prefix: !!prefixIconName,
+        suffix: !!suffixIconName,
+        [type]: true,
+        [size]: true,
+      }"
+      :value="value"
       :checked="checked"
       :disabled="disabled === true || disabled === 'true'"
-      :max="max"
-      :min="min"
-      :placeholder="placeholder"
       :readonly="readonly === true || readonly === 'true'"
-      :step="step"
-      :style="inputStyle"
       :type="type"
-      :value="value"
       @input="onInput"
+      v-bind="$attrs"
     />
     <Icon
       v-if="suffixIconName"
@@ -52,49 +57,27 @@ import Icon from "../icon/Icon.vue";
 export default {
   name: "Input",
   components: { Icon },
+  inheritAttrs: false,
   props: {
     bordered: { type: [Boolean, String], default: true },
     checked: { type: Boolean, default: false },
     disabled: [Boolean, String],
     error: [Boolean, String],
-    inputStyle: [String, Object],
-    max: [String, Number],
-    min: [String, Number],
-    placeholder: { type: String, default: "" },
+    labelStyle: [String, Object],
     prefixIconName: String,
     prefixIconStyle: [String, Object],
     readonly: [Boolean, String],
-    step: [String, Number],
     suffixIconName: String,
     suffixIconStyle: [String, Object],
     size: { type: String, default: "middle" },
     type: { type: String, defult: "text" },
     value: String,
-    width: { type: [Number, String], default: "180px" },
   },
   setup(props, context) {
     const onInput = (ev: InputEvent) => {
       context.emit("update:value", (ev.target as HTMLInputElement).value);
       context.emit("update:checked", (ev.target as HTMLInputElement).checked);
     };
-
-    const inputWidth = computed(() => {
-      if (props.type === "radio") {
-        if (props.size == "small") {
-          return "24px";
-        }
-
-        if (props.size == "middle") {
-          return "32px";
-        }
-
-        if (props.size == "large") {
-          return "40px";
-        }
-      }
-
-      return typeof props.width === "string" ? props.width : props.width + "px";
-    });
 
     const onPrefixIcon = (ev: MouseEvent) => {
       context.emit("click-prefix", ev);
@@ -104,11 +87,11 @@ export default {
       context.emit("click-suffix", ev);
     };
 
-    return { onInput, inputWidth, onPrefixIcon, onSuffixIcon };
+    return { onInput, onPrefixIcon, onSuffixIcon };
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/var.scss";
 
 .dwc-input {
@@ -222,7 +205,6 @@ export default {
   }
 
   > .dwc-input-el {
-    width: 100%;
     height: 100%;
     padding: 0 12px;
     border: none;
