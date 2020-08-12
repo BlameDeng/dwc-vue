@@ -8,3 +8,4 @@ export { default as TextArea } from "./input/TextArea.vue";
 export { default as Switch } from "./switch/Switch.vue";
 export { default as Tabs } from "./tabs/Tabs.vue";
 export { default as TabPane } from "./tabs/TabPane.vue";
+export { default as CollapseTransition } from "./collapse-transition/CollapseTransition.vue";

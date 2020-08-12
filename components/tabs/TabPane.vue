@@ -10,7 +10,6 @@ import { DWCTabsActiveTabName } from "./Tabs.vue";
 
 export default {
   name: "TabPane",
-  components: {},
   props: {
     disabled: { type: [Boolean, String], default: false },
     label: String,

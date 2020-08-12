@@ -54,9 +54,21 @@ export default {
     iconName: String,
     iconSize: { type: [Number, String], default: "1em" },
     loading: [Boolean, String],
-    size: { type: String, default: "middle" },
+    size: {
+      type: String,
+      default: "middle",
+      validator<String>(val: string) {
+        return ["small", "middle", "large"].includes(val);
+      },
+    },
     target: String,
-    type: { type: String, default: "default" },
+    type: {
+      type: String,
+      default: "default",
+      validator<String>(val: string) {
+        return ["primary", "default"].includes(val);
+      },
+    },
   },
   setup(props, context) {
     const onClick = (ev: MouseEvent) => {

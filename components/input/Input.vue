@@ -69,7 +69,13 @@ export default {
     readonly: [Boolean, String],
     suffixIconName: String,
     suffixIconStyle: [String, Object],
-    size: { type: String, default: "middle" },
+    size: {
+      type: String,
+      default: "middle",
+      validator<String>(val: string) {
+        return ["small", "middle", "large"].includes(val);
+      },
+    },
     type: { type: String, defult: "text" },
     value: String,
   },

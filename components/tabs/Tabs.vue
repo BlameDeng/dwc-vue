@@ -35,8 +35,20 @@ export default {
   props: {
     activeTabName: [Number, String],
     contentStyle: [Object, String],
-    tabPosition: { type: String, default: "top" },
-    type: { type: String, default: "line" },
+    tabPosition: {
+      type: String,
+      default: "top",
+      validator<String>(val: string) {
+        return ["top", "left", "bottom", "right"].includes(val);
+      },
+    },
+    type: {
+      type: String,
+      default: "line",
+      validator<String>(val: string) {
+        return ["line", "card"].includes(val);
+      },
+    },
   },
   setup(props, context) {
     const getFirstTabName = (): number | string | undefined => {

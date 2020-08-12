@@ -1,4 +1,5 @@
 <template>
+  <CollapseTransitionExample />
   <TabsExample />
   <ButtonExample />
   <IconExample />
@@ -7,6 +8,7 @@
 </template>
 <script lang="ts">
 import ButtonExample from "../examples/ButtonExample.vue";
+import CollapseTransitionExample from "../examples/CollapseTransitionExample.vue";
 import IconExample from "../examples/IconExample.vue";
 import InputExample from "../examples/InputExample.vue";
 import SwitchExample from "../examples/SwitchExample.vue";
@@ -16,6 +18,7 @@ export default {
   name: "Doc",
   components: {
     ButtonExample,
+    CollapseTransitionExample,
     IconExample,
     InputExample,
     SwitchExample,

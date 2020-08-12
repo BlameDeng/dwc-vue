@@ -5,13 +5,24 @@ import { DWCTabsActiveTabName } from "./Tabs.vue";
 
 export default {
   name: "TabNav",
-  components: {},
   inheritAttrs: false,
   props: {
     activeTabLabelRect: DOMRect,
     renderLabels: Function,
-    tabPosition: { type: String, default: "top" },
-    type: { type: String, default: "line" },
+    tabPosition: {
+      type: String,
+      default: "top",
+      validator<String>(val: string) {
+        return ["top", "left", "bottom", "right"].includes(val);
+      },
+    },
+    type: {
+      type: String,
+      default: "line",
+      validator<String>(val: string) {
+        return ["line", "card"].includes(val);
+      },
+    },
   },
   setup(props, context) {
     const activeTabName = inject(DWCTabsActiveTabName);

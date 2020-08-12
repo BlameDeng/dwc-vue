@@ -16,7 +16,13 @@ export default {
   name: "Switch",
   props: {
     disabled: [Boolean, String],
-    size: { type: String, default: "middle" },
+    size: {
+      type: String,
+      default: "middle",
+      validator<String>(val: string) {
+        return ["small", "middle"].includes(val);
+      },
+    },
     value: { type: Boolean, required: true },
   },
   setup(props, context) {
