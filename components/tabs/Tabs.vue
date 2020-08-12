@@ -1,29 +1,42 @@
 <template>
-  <div class="dwc-tabs">
-    <TabNav :label-map="labelMap" @click-tab="onTab" />
-    <slot></slot>
+  <div class="dwc-tabs" :class="{ [tabPosition]: true }">
+    <TabNav
+      :active-tab-label-rect="activeTabLabelRect"
+      :render-labels="renderLabels"
+      :tab-position="tabPosition"
+      :type="type"
+    />
+    <div class="dwc-tabs-content" :style="contentStyle">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { InjectionKey, provide, ref, Ref, computed, readonly } from "vue";
+import {
+  InjectionKey,
+  provide,
+  ref,
+  Ref,
+  computed,
+  readonly,
+  h,
+  watchEffect,
+} from "vue";
 
 import TabNav from "./TabNav.vue";
 
 export const DWCTabsActiveTabName: InjectionKey<Ref<number | string>> = Symbol(
   "DWCTabsActiveTabName"
 );
-export const DWCTabsUpdateCurrentTabName: InjectionKey<(
-  n: string
-) => void> = Symbol("DWCTabsUpdateCurrentTabName");
 
 export default {
   name: "Tabs",
   components: { TabNav },
   props: {
     activeTabName: [Number, String],
-    bordered: { type: Boolean, default: true },
+    contentStyle: [Object, String],
     tabPosition: { type: String, default: "top" },
-    type: { type: String, default: "default" },
+    type: { type: String, default: "line" },
   },
   setup(props, context) {
     const getFirstTabName = (): number | string | undefined => {
@@ -45,40 +58,111 @@ export default {
       return current.value;
     });
 
-    const updateCurrentTabName = (val: string) => {
-      current.value = val;
-      context.emit("update:activeTabName", val);
-    };
-
     provide(DWCTabsActiveTabName, readonly(currentTabName));
-    provide(DWCTabsUpdateCurrentTabName, updateCurrentTabName);
 
-    const labelMap = ref<Map<string, any>>(new Map());
+    const activeTabLabel = ref<HTMLDivElement>(null);
 
-    if (context.slots?.default) {
-      const map = new Map();
+    const activeTabLabelRect = computed(() => {
+      if (activeTabLabel.value) {
+        return activeTabLabel.value.getBoundingClientRect();
+      }
 
-      context.slots.default().forEach((vn) => {
-        const l = (vn.children as any).label
-          ? (vn.children as any).label()
-          : vn.props.label;
+      return null;
+    });
 
-        if (l === undefined) {
-          throw new Error("123");
-        }
+    const onTab = (ev: MouseEvent, val: string, disabled: boolean | string) => {
+      context.emit("click-tab", [ev, val]);
 
-        map.set(vn.props.name, l);
-      });
-
-      labelMap.value = map;
-    }
-
-    const onTab = (args: any[]) => {
-      context.emit("click-tab", args);
+      if (!(disabled === true || disabled === "true")) {
+        current.value = val;
+        context.emit("update:activeTabName", val);
+      }
     };
 
-    return { labelMap, onTab };
+    const renderLabels = () => {
+      if (context.slots?.default) {
+        return context.slots.default().map((vn) => {
+          const label = (vn.children as any).label
+            ? (vn.children as any).label()
+            : vn.props.label;
+
+          if (label === undefined) {
+            throw new Error(
+              `Each TabPane needs a label, which can be specified with "label" prop or named slot.`
+            );
+          }
+
+          return h(
+            "div",
+            {
+              className: `dwc-tab-nav-label ${props.type}${
+                currentTabName.value === vn.props.name ? " active" : ""
+              }${
+                vn.props.disabled === true || vn.props.disabled === "true"
+                  ? " disabled"
+                  : ""
+              }`,
+              style: vn.props.labelStyle || vn.props["label-style"],
+              onClick: (ev: MouseEvent) =>
+                onTab(ev, vn.props.name, vn.props.disabled),
+              ref: (el: HTMLDivElement) => {
+                if (currentTabName.value === vn.props.name) {
+                  activeTabLabel.value = el;
+                }
+              },
+            },
+            label
+          );
+        });
+      }
+
+      return [];
+    };
+
+    return { activeTabLabelRect, renderLabels };
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.dwc-tabs {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+
+  &.top {
+    flex-direction: column;
+
+    > .dwc-tabs-content {
+      order: 2;
+      padding-top: 8px;
+    }
+  }
+
+  &.bottom {
+    flex-direction: column;
+
+    > .dwc-tabs-content {
+      order: 1;
+      padding-bottom: 8px;
+    }
+  }
+
+  &.left {
+    > .dwc-tabs-content {
+      order: 2;
+      padding-left: 16px;
+    }
+  }
+
+  &.right {
+    > .dwc-tabs-content {
+      order: 1;
+      padding-right: 16px;
+    }
+  }
+
+  > .dwc-tabs-content {
+    flex-grow: 1;
+  }
+}
+</style>

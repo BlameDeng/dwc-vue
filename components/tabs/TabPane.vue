@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import { inject } from "vue";
+import { inject, watchEffect } from "vue";
 
 import { DWCTabsActiveTabName } from "./Tabs.vue";
 
@@ -13,7 +13,8 @@ export default {
   components: {},
   props: {
     disabled: { type: [Boolean, String], default: false },
-    label: { type: String, required: true },
+    label: String,
+    labelStyle: [Object, String],
     name: { type: [Number, String], required: true },
   },
   setup(props, context) {
@@ -23,4 +24,11 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+@import "../assets/var.scss";
+
+.dwc-tab-pane {
+  color: $dwc-main;
+  font-size: 14px;
+}
+</style>
