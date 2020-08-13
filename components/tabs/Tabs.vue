@@ -30,7 +30,7 @@ export const DWCTabsActiveTabName: InjectionKey<Ref<number | string>> = Symbol(
 );
 
 export default {
-  name: "Tabs",
+  name: "dwc-tabs",
   components: { TabNav },
   props: {
     activeTabName: [Number, String],

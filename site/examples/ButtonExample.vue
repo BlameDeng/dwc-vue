@@ -1,73 +1,86 @@
 <template>
   <div class="container">
     <div class="row">
-      <Button :style="{ marginRight: '8px' }" :size="size">Default</Button>
-      <Button :style="{ marginRight: '8px' }" type="primary" :size="size">
+      <dwc-button :style="{ marginRight: '8px' }" :size="size"
+        >Default</dwc-button
+      >
+      <dwc-button :style="{ marginRight: '8px' }" type="primary" :size="size">
         Primary
-      </Button>
-      <Button :style="{ marginRight: '8px' }" disabled="true" :size="size">
+      </dwc-button>
+      <dwc-button :style="{ marginRight: '8px' }" disabled="true" :size="size">
         Default
-      </Button>
-      <Button type="primary" :disabled="true" :size="size">Primary</Button>
+      </dwc-button>
+      <dwc-button type="primary" :disabled="true" :size="size"
+        >Primary</dwc-button
+      >
     </div>
     <div class="row">
-      <Button :style="{ marginRight: '8px' }" :danger="true" :size="size">
+      <dwc-button :style="{ marginRight: '8px' }" :danger="true" :size="size">
         Default
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         type="primary"
         :danger="true"
         :size="size"
       >
         Primary
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         :danger="true"
         disabled="true"
         :size="size"
       >
         Default
-      </Button>
-      <Button type="primary" :danger="true" :disabled="true" :size="size">
+      </dwc-button>
+      <dwc-button type="primary" :danger="true" :disabled="true" :size="size">
         Primary
-      </Button>
+      </dwc-button>
     </div>
     <div class="row">
-      <Button :style="{ marginRight: '8px' }" :size="size" icon-name="settings">
+      <dwc-button
+        :style="{ marginRight: '8px' }"
+        :size="size"
+        icon-name="settings"
+      >
         Settings
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         type="primary"
         :size="size"
         icon-name="airplane"
       >
         Airplane
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         :disabled="true"
         :size="size"
         icon-name="import"
       >
         Import
-      </Button>
-      <Button type="primary" disabled="true" :size="size" icon-name="export">
+      </dwc-button>
+      <dwc-button
+        type="primary"
+        disabled="true"
+        :size="size"
+        icon-name="export"
+      >
         Export
-      </Button>
+      </dwc-button>
     </div>
     <div class="row">
-      <Button
+      <dwc-button
         :style="{ marginRight: '8px' }"
         :size="size"
         icon-name="settings"
         :danger="true"
       >
         Settings
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         type="primary"
         :size="size"
@@ -75,8 +88,8 @@
         :danger="true"
       >
         Airplane
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         :disabled="true"
         :size="size"
@@ -84,8 +97,8 @@
         danger="true"
       >
         Import
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         type="primary"
         disabled="true"
         :size="size"
@@ -93,52 +106,52 @@
         danger="true"
       >
         Export
-      </Button>
+      </dwc-button>
     </div>
     <div class="row">
-      <Button
+      <dwc-button
         :style="{ marginRight: '8px' }"
         size="small"
         :type="size === 'small' ? 'primary' : 'default'"
         @click="setSize('small')"
       >
         Small
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         :style="{ marginRight: '8px' }"
         :type="size === 'middle' ? 'primary' : 'default'"
         @click="setSize('middle')"
       >
         Middle
-      </Button>
-      <Button
+      </dwc-button>
+      <dwc-button
         size="large"
         :type="size === 'large' ? 'primary' : 'default'"
         @click="setSize('large')"
       >
         Large
-      </Button>
+      </dwc-button>
     </div>
     <div class="row">
-      <Button
+      <dwc-button
         icon-name="cursor"
         type="primary"
         :loading="loading"
         @click="toggleLoading"
       >
         Click me!
-      </Button>
+      </dwc-button>
     </div>
     <div class="row">
-      <Button href="https://www.baidu.com" target="_blank">Href</Button>
-      <Button
+      <dwc-button href="https://www.baidu.com" target="_blank">Href</dwc-button>
+      <dwc-button
         href="https://www.baidu.com"
         target="_blank"
         :style="{ marginRight: '8px' }"
         disabled="true"
       >
         Href
-      </Button>
+      </dwc-button>
     </div>
   </div>
 </template>
@@ -148,8 +161,8 @@ import { ref } from "vue";
 import { Button } from "../../components";
 
 export default {
-  name: "ButtonExample",
-  components: { Button },
+  name: "button-example",
+  components: { "dwc-button": Button },
   setup() {
     const size = ref("middle");
     const loading = ref(true);

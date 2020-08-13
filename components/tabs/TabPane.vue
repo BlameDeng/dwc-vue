@@ -9,7 +9,7 @@ import { inject, watchEffect } from "vue";
 import { DWCTabsActiveTabName } from "./Tabs.vue";
 
 export default {
-  name: "TabPane",
+  name: "dwc-tab-pane",
   props: {
     disabled: { type: [Boolean, String], default: false },
     label: String,

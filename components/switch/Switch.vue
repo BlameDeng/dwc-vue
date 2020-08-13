@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: "Switch",
+  name: "dwc-switch",
   props: {
     disabled: [Boolean, String],
     size: {

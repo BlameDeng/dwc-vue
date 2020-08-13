@@ -4,7 +4,7 @@ import { h, inject, watchEffect, ref, computed } from "vue";
 import { DWCTabsActiveTabName } from "./Tabs.vue";
 
 export default {
-  name: "TabNav",
+  name: "dwc-tab-nav",
   inheritAttrs: false,
   props: {
     activeTabLabelRect: DOMRect,

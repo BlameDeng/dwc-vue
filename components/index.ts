@@ -1,13 +1,56 @@
 import "./index.scss";
 
-export { default as Button } from "./button/Button.vue";
-export { default as Icon } from "./icon/Icon.vue";
-export { default as Input } from "./input/Input.vue";
-export { default as Password } from "./input/Password.vue";
-export { default as TextArea } from "./input/TextArea.vue";
-export { default as Switch } from "./switch/Switch.vue";
-export { default as Tabs } from "./tabs/Tabs.vue";
-export { default as TabPane } from "./tabs/TabPane.vue";
-export { default as CollapseTransition } from "./collapse-transition/CollapseTransition.vue";
+import { Plugin } from "vue";
 
-export { ClickOutside } from "./directives/ClickOutside";
+import { ClickOutside } from "./directives/ClickOutside";
+
+import { default as Button } from "./button/Button.vue";
+import { default as CollapseTransition } from "./collapse-transition/CollapseTransition.vue";
+import { default as Icon } from "./icon/Icon.vue";
+import { default as Input } from "./input/Input.vue";
+import { default as Password } from "./input/Password.vue";
+import { default as TextArea } from "./input/TextArea.vue";
+import { default as Select } from "./select/Select.vue";
+import { default as Option } from "./select/Option.vue";
+import { default as Switch } from "./switch/Switch.vue";
+import { default as Tabs } from "./tabs/Tabs.vue";
+import { default as TabPane } from "./tabs/TabPane.vue";
+
+const components = [
+  Button,
+  CollapseTransition,
+  Icon,
+  Input,
+  Password,
+  TextArea,
+  Select,
+  Option,
+  Switch,
+  Tabs,
+  TabPane,
+];
+
+export {
+  ClickOutside,
+  Button,
+  CollapseTransition,
+  Icon,
+  Input,
+  Password,
+  TextArea,
+  Select,
+  Option,
+  Switch,
+  Tabs,
+  TabPane,
+};
+
+export const version = "0.0.1";
+
+export const install: Plugin = (app) => {
+  app.directive("click-outside", ClickOutside);
+
+  components.forEach((component) => {
+    app.component(component.name, component);
+  });
+};

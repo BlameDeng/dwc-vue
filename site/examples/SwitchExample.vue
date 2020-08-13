@@ -1,17 +1,20 @@
 <template>
   <div class="container">
-    <Switch v-model:value="value1" :style="{ marginRight: '8px' }" />
-    <Switch
+    <dwc-switch
+      v-model:value="value1"
+      :style="{ marginRight: '8px' }"
+    ></dwc-switch>
+    <dwc-switch
       v-model:value="value2"
       size="small"
       :style="{ marginRight: '8px' }"
-    />
-    <Switch
+    ></dwc-switch>
+    <dwc-switch
       v-model:value="value3"
       :disabled="true"
       :style="{ marginRight: '8px' }"
-    />
-    <Switch v-model:value="value4" disabled="true" />
+    ></dwc-switch>
+    <dwc-switch v-model:value="value4" disabled="true"></dwc-switch>
   </div>
 </template>
 <script lang="ts">
@@ -20,8 +23,8 @@ import { ref } from "vue";
 import { Switch } from "../../components";
 
 export default {
-  name: "SwitchExample",
-  components: { Switch },
+  name: "switch-example",
+  components: { "dwc-switch": Switch },
   setup() {
     const value1 = ref(false);
     const value2 = ref(true);

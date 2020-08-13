@@ -11,7 +11,7 @@
 import { computed } from "vue";
 
 export default {
-  name: "Icon",
+  name: "dwc-icon",
   props: {
     name: { type: String, required: true },
     spinning: [Boolean, String],

@@ -1,188 +1,167 @@
 <template>
   <div class="container">
     <div class="row">
-      <Input
-        :style="{ marginRight: '8px' }"
-        v-model:value="value1"
-        placeholder="Small..."
-        size="small"
-      />
-      <Input
-        :style="{ marginRight: '8px' }"
-        v-model:value="value2"
-        placeholder="Middle..."
-      />
-      <Input v-model:value="value3" placeholder="Large..." size="large" />
+      <dwc-select
+        v-model:value="state.size"
+        :allow-clear="false"
+        style="width: 100px;"
+      >
+        <dwc-option value="small" label="Small"></dwc-option>
+        <dwc-option value="middle" label="Middle"></dwc-option>
+        <dwc-option value="large" label="Large"></dwc-option>
+      </dwc-select>
     </div>
     <div class="row">
-      <Input
-        :style="{ marginRight: '8px' }"
-        v-model:value="value4"
-        :disabled="true"
-      />
-      <Input
-        :style="{ marginRight: '8px' }"
-        v-model:value="value5"
-        readonly="true"
-      />
-      <Input v-model:value="value6" :error="true" />
-    </div>
-    <div class="row">
-      <Input
-        :style="{ marginRight: '8px' }"
-        v-model:value="value7"
-        prefixIconName="user"
-      />
-      <Input
-        v-model:value="value8"
-        :error="!!value8"
-        prefix-icon-name="lock"
-        suffix-icon-name="close"
-        suffix-icon-style="cursor:pointer;"
-        placeholder="Input..."
-        @click-suffix="onClear"
-      />
-    </div>
-    <div class="row">
-      <Input
-        :style="{ marginRight: '8px' }"
-        min="0"
-        max="10"
-        step="0.5"
-        type="number"
-        v-model:value="value10"
-      />
-      <Password v-model:value="value9" />
-    </div>
-    <div class="row">
-      <Input
-        :style="{ marginRight: '8px' }"
-        type="radio"
-        v-model:checked="value11"
-      />
-      <Input
-        :style="{ marginRight: '8px' }"
-        min="1"
-        max="100"
-        step="1"
-        type="range"
-        v-model:value="value12"
-      />
-      <Input :style="{ width: '120px' }" type="color" v-model:value="value13" />
-    </div>
-    <div class="row">
-      <Input
-        :disabled="true"
-        :style="{ marginRight: '8px' }"
-        type="radio"
-        :checked="true"
-      />
-      <Input
-        :disabled="true"
-        :style="{ marginRight: '8px' }"
-        min="1"
-        max="100"
-        step="1"
-        type="range"
-        value="50"
-      />
-      <Input
-        :disabled="true"
-        :style="{ width: '120px' }"
-        type="color"
-        value="#ffffff"
-      />
-    </div>
-    <div class="row">
-      <Input
+      <dwc-input
+        :label-attrs="{ style: { marginRight: '8px' } }"
+        v-model:value="value"
+        :placeholder="
+          state.size.replace(state.size[0], state.size[0].toUpperCase()) + '...'
+        "
+        :size="state.size"
+      >
+      </dwc-input>
+      <dwc-input
         bordered="false"
         placeholder="Borderless..."
-        v-model:value="value14"
-      />
+        :size="state.size"
+      ></dwc-input>
     </div>
     <div class="row">
-      <TextArea v-model:value="value15" :cols="50" :rows="8" />
+      <dwc-select
+        v-model:value="state.status"
+        :allow-clear="false"
+        style="width: 100px;"
+      >
+        <dwc-option value="disabled" label="Disabled"></dwc-option>
+        <dwc-option value="readonly" label="Readonly"></dwc-option>
+        <dwc-option value="error" label="Error"></dwc-option>
+      </dwc-select>
     </div>
     <div class="row">
-      <TextArea cols="50" rows="8" v-model:value="value16" :autosize="true" />
+      <dwc-input
+        :placeholder="
+          state.status.replace(state.status[0], state.status[0].toUpperCase()) +
+          '...'
+        "
+        :disabled="state.status === 'disabled'"
+        :readonly="state.status === 'readonly'"
+        :error="state.status === 'error'"
+      >
+      </dwc-input>
     </div>
     <div class="row">
-      <TextArea
+      <dwc-text-area
         :style="{ width: '250px', height: '100px' }"
-        v-model:value="value17"
-        :disabled="true"
-      />
+        :placeholder="
+          state.status.replace(state.status[0], state.status[0].toUpperCase()) +
+          '...'
+        "
+        :disabled="state.status === 'disabled'"
+        :readonly="state.status === 'readonly'"
+        :error="state.status === 'error'"
+      >
+      </dwc-text-area>
     </div>
     <div class="row">
-      <TextArea
-        :style="{ width: '250px', height: '100px' }"
-        v-model:value="value18"
-        :readonly="true"
-      />
+      <dwc-input
+        :label-attrs="{ style: { marginRight: '8px' } }"
+        prefixIconName="user"
+      >
+      </dwc-input>
+      <dwc-input
+        v-model:value="password1"
+        :error="!!password1"
+        prefix-icon-name="lock"
+        suffix-icon-name="close"
+        suffix-icon-style="cursor:pointer; width: 12px; height: 12px;"
+        placeholder="Input..."
+        @click-suffix="clear"
+      >
+      </dwc-input>
     </div>
     <div class="row">
-      <TextArea
+      <dwc-password v-model:value="password2"></dwc-password>
+    </div>
+    <div class="row">
+      <dwc-select
+        v-model:value="state.type"
+        :allow-clear="false"
+        style="width: 100px;"
+      >
+        <dwc-option value="text" label="Text"></dwc-option>
+        <dwc-option value="number" label="Number"></dwc-option>
+        <dwc-option value="radio" label="Radio"></dwc-option>
+        <dwc-option value="range" label="Range"></dwc-option>
+        <dwc-option value="color" label="Color"></dwc-option>
+      </dwc-select>
+      <dwc-input
+        :label-attrs="{ style: { marginLeft: '8px' } }"
+        :type="state.type"
+        :style="state.type === 'color' ? 'width: 80px;' : ''"
+      >
+      </dwc-input>
+    </div>
+    <div class="row">
+      Autosize:<dwc-switch
+        v-model:value="state.autosize"
+        style="margin-left: 8px;"
+      ></dwc-switch>
+    </div>
+    <div class="row">
+      <dwc-text-area
         :style="{ width: '250px', height: '100px' }"
-        v-model:value="value19"
-        :error="true"
-      />
+        :autosize="state.autosize"
+      ></dwc-text-area>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
-import { Input, Password, TextArea } from "../../components";
+import {
+  Button,
+  Switch,
+  Input,
+  Password,
+  TextArea,
+  Select,
+  Option,
+} from "../../components";
 
 export default {
-  name: "InputExample",
-  components: { Input, Password, TextArea },
+  name: "input-example",
+  components: {
+    "dwc-button": Button,
+    "dwc-switch": Switch,
+    "dwc-input": Input,
+    "dwc-password": Password,
+    "dwc-text-area": TextArea,
+    "dwc-select": Select,
+    "dwc-option": Option,
+  },
   setup() {
-    const value1 = ref("");
-    const value2 = ref("");
-    const value3 = ref("");
-    const value4 = ref("Disabled");
-    const value5 = ref("Readonly");
-    const value6 = ref("Error");
-    const value7 = ref("");
-    const value8 = ref("");
-    const value9 = ref("");
-    const value10 = ref("1");
-    const value11 = ref(false);
-    const value12 = ref("20");
-    const value13 = ref("#ffffff");
-    const value14 = ref("");
-    const value15 = ref("");
-    const value16 = ref("");
-    const value17 = ref("Disabled");
-    const value18 = ref("Readonly");
-    const value19 = ref("Error");
+    const value = ref("");
+    const password1 = ref("");
+    const password2 = ref("");
 
-    const onClear = () => {
-      value8.value = "";
+    const state = reactive({
+      size: "middle",
+      type: "text",
+      autosize: true,
+      status: "disabled",
+    });
+
+    const clear = () => {
+      password1.value = "";
     };
 
     return {
-      value1,
-      value2,
-      value3,
-      value4,
-      value5,
-      value6,
-      value7,
-      value8,
-      value9,
-      value10,
-      value11,
-      value12,
-      value13,
-      value14,
-      value15,
-      value16,
-      value17,
-      value18,
-      value19,
-      onClear,
+      value,
+      password1,
+      password2,
+      state,
+      clear,
     };
   },
 };

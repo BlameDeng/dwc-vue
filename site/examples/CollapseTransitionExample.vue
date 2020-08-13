@@ -1,18 +1,18 @@
 <template>
   <div class="container">
     <div class="row">
-      <CollapseTransition>
+      <dwc-collapse-transition>
         <div class="example" v-show="visible1">
           Horizontal
         </div>
-      </CollapseTransition>
+      </dwc-collapse-transition>
     </div>
     <div class="row">
-      <CollapseTransition direction="column">
+      <dwc-collapse-transition direction="vertical">
         <div class="example" v-if="visible2">
           Column
         </div>
-      </CollapseTransition>
+      </dwc-collapse-transition>
     </div>
   </div>
 </template>
@@ -21,8 +21,8 @@ import { CollapseTransition } from "../../components";
 import { ref } from "vue";
 
 export default {
-  name: "CollapseTransitionExample",
-  components: { CollapseTransition },
+  name: "collapse-transition-example",
+  components: { "dwc-collapse-transition": CollapseTransition },
   setup() {
     const visible1 = ref(false);
     const visible2 = ref(true);

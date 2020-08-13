@@ -44,7 +44,7 @@
 import Icon from "../icon/Icon.vue";
 
 export default {
-  name: "Button",
+  name: "dwc-button",
   components: { Icon },
   props: {
     danger: [Boolean, String],

@@ -12,7 +12,7 @@ import { ref } from "vue";
 import Input from "./Input.vue";
 
 export default {
-  name: "Password",
+  name: "dwc-password",
   components: { Input },
   setup(props, context) {
     const visible = ref(false);

@@ -14,13 +14,13 @@
 import { ref, reactive, computed, nextTick } from "vue";
 
 export default {
-  name: "CollapseTransition",
+  name: "dwc-collapse-transition",
   props: {
     direction: {
       type: String,
       default: "horizontal",
       validator<String>(val: string) {
-        return ["horizontal", "column"].includes(val);
+        return ["horizontal", "vertical"].includes(val);
       },
     },
     duration: { type: [Number, String], default: 250 },

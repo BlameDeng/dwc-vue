@@ -10,7 +10,7 @@
       [type]: true,
       [size]: true,
     }"
-    :style="labelStyle"
+    v-bind="labelAttrs"
   >
     <Icon
       v-if="prefixIconName"
@@ -55,7 +55,7 @@ import { computed } from "vue";
 import Icon from "../icon/Icon.vue";
 
 export default {
-  name: "Input",
+  name: "dwc-input",
   components: { Icon },
   inheritAttrs: false,
   props: {
@@ -63,7 +63,7 @@ export default {
     checked: { type: Boolean, default: false },
     disabled: [Boolean, String],
     error: [Boolean, String],
-    labelStyle: [String, Object],
+    labelAttrs: Object,
     prefixIconName: String,
     prefixIconStyle: [String, Object],
     readonly: [Boolean, String],
@@ -211,6 +211,7 @@ export default {
   }
 
   > .dwc-input-el {
+    width: 100%;
     height: 100%;
     padding: 0 12px;
     border: none;
@@ -219,6 +220,7 @@ export default {
     font-size: inherit;
     transition: border-color $dwc-transition;
     text-overflow: ellipsis;
+    outline: none;
 
     &::placeholder {
       color: $dwc-disable;
@@ -236,7 +238,6 @@ export default {
     &:focus {
       border-color: $dwc-blue;
       box-shadow: 0px 0px 2px $dwc-blue-highlight;
-      outline: none;
     }
   }
 

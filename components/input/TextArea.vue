@@ -19,7 +19,7 @@ import { ref, onMounted } from "vue";
 import { calNodeHeight } from "../utils/calNodeHeight";
 
 export default {
-  name: "TextArea",
+  name: "dwc-text-area",
   props: {
     autosize: [Boolean, String],
     bordered: { type: [Boolean, String], default: true },
