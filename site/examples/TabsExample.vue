@@ -15,7 +15,11 @@
       >
         Card
       </dwc-button>
-      <dwc-select v-model:value="position">
+      <dwc-select
+        v-model:value="position"
+        allow-clear="false"
+        style="width: 100px;"
+      >
         <dwc-option value="top" label="Top"></dwc-option>
         <dwc-option value="left" label="Left"></dwc-option>
         <dwc-option value="right" label="Right"></dwc-option>

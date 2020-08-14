@@ -41,11 +41,11 @@ import { ClickOutside } from "../directives/ClickOutside";
 import CollapseTransition from "../collapse-transition/CollapseTransition.vue";
 import Input from "../input/Input.vue";
 
-export const DWCSelectValue: InjectionKey<Ref<number | string>> = Symbol(
+export const DWCSelectValue: InjectionKey<Ref<string | number>> = Symbol(
   "DWCSelectValue"
 );
 export const DWCUpdateSelectValue: InjectionKey<(
-  val: number | string
+  val: string | number
 ) => void> = Symbol("DWCUpdateSelectValue");
 
 export default {
@@ -73,7 +73,7 @@ export default {
   setup(props, context) {
     const closed = ref(true);
 
-    const map = ref<Map<number | string, number | string>>(new Map());
+    const map = ref<Map<string | number, string | number>>(new Map());
 
     if (context.slots?.default) {
       context.slots.default().forEach((child) => {
@@ -90,7 +90,7 @@ export default {
       });
     }
 
-    const current = ref<number | string>();
+    const current = ref<string | number>();
 
     const selectValue = computed(() => {
       if (props.value !== undefined) {
@@ -100,7 +100,7 @@ export default {
       return current.value;
     });
 
-    const updateSelectValue = (val: number | string) => {
+    const updateSelectValue = (val: string | number) => {
       current.value = val;
       context.emit("update:value", val);
     };
@@ -197,7 +197,7 @@ export default {
 
   > .dwc-select-dropdown-list {
     width: 100%;
-    margin: 0;
+    margin-bottom: 0;
     padding: 4px 0;
     background-color: #fff;
     position: absolute;

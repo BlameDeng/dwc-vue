@@ -12,20 +12,11 @@
   </div>
 </template>
 <script lang="ts">
-import {
-  InjectionKey,
-  provide,
-  ref,
-  Ref,
-  computed,
-  readonly,
-  h,
-  watchEffect,
-} from "vue";
+import { InjectionKey, provide, ref, Ref, computed, readonly, h } from "vue";
 
 import TabNav from "./TabNav.vue";
 
-export const DWCTabsActiveTabName: InjectionKey<Ref<number | string>> = Symbol(
+export const DWCTabsActiveTabName: InjectionKey<Ref<string | number>> = Symbol(
   "DWCTabsActiveTabName"
 );
 
@@ -51,7 +42,7 @@ export default {
     },
   },
   setup(props, context) {
-    const getFirstTabName = (): number | string | undefined => {
+    const getFirstTabName = (): string | number | undefined => {
       if (context.slots?.default) {
         const slots = context.slots.default();
         return slots[0]?.props?.name;
@@ -87,7 +78,7 @@ export default {
 
       if (!(disabled === true || disabled === "true")) {
         current.value = val;
-        context.emit("update:activeTabName", val);
+        context.emit("update:active-tab-name", val);
       }
     };
 

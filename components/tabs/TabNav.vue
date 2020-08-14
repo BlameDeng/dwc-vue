@@ -1,5 +1,5 @@
 <script lang="ts">
-import { h, inject, watchEffect, ref, computed } from "vue";
+import { h, inject, ref, computed } from "vue";
 
 import { DWCTabsActiveTabName } from "./Tabs.vue";
 

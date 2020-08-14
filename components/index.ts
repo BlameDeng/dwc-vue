@@ -10,6 +10,10 @@ import { default as Icon } from "./icon/Icon.vue";
 import { default as Input } from "./input/Input.vue";
 import { default as Password } from "./input/Password.vue";
 import { default as TextArea } from "./input/TextArea.vue";
+import { default as Menu } from "./menu/Menu.vue";
+import { default as MenuGroup } from "./menu/MenuGroup.vue";
+import { default as MenuItem } from "./menu/MenuItem.vue";
+import { default as SubMenu } from "./menu/SubMenu.vue";
 import { default as Select } from "./select/Select.vue";
 import { default as Option } from "./select/Option.vue";
 import { default as Switch } from "./switch/Switch.vue";
@@ -23,6 +27,10 @@ const components = [
   Input,
   Password,
   TextArea,
+  Menu,
+  MenuGroup,
+  MenuItem,
+  SubMenu,
   Select,
   Option,
   Switch,
@@ -38,6 +46,10 @@ export {
   Input,
   Password,
   TextArea,
+  Menu,
+  MenuGroup,
+  MenuItem,
+  SubMenu,
   Select,
   Option,
   Switch,

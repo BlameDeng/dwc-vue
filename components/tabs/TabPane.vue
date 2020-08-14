@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import { inject, watchEffect } from "vue";
+import { inject } from "vue";
 
 import { DWCTabsActiveTabName } from "./Tabs.vue";
 
