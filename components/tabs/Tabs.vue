@@ -98,7 +98,7 @@ export default {
           return h(
             "div",
             {
-              className: `dwc-tab-nav-label ${props.type}${
+              class: `dwc-tab-nav-label ${props.type}${
                 currentTabName.value === vn.props.name ? " active" : ""
               }${
                 vn.props.disabled === true || vn.props.disabled === "true"

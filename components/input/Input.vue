@@ -12,14 +12,14 @@
     }"
     v-bind="labelAttrs"
   >
-    <Icon
+    <dwc-icon
       v-if="prefixIconName"
       class="dwc-input-prefix-icon"
       :name="prefixIconName"
       size="1em"
       :style="prefixIconStyle"
       @click="onPrefixIcon"
-    />
+    ></dwc-icon>
     <input
       class="dwc-input-el"
       :class="{
@@ -39,24 +39,23 @@
       @input="onInput"
       v-bind="$attrs"
     />
-    <Icon
+    <dwc-icon
       v-if="suffixIconName"
       class="dwc-input-suffix-icon"
       :name="suffixIconName"
       size="1em"
       :style="suffixIconStyle"
       @click="onSuffixIcon"
-    />
+    ></dwc-icon>
   </label>
 </template>
 <script lang="ts">
 import { computed } from "vue";
-
-import Icon from "../icon/Icon.vue";
+import { Icon } from "dwc-icons";
 
 export default {
   name: "dwc-input",
-  components: { Icon },
+  components: { "dwc-icon": Icon },
   inheritAttrs: false,
   props: {
     bordered: { type: [Boolean, String], default: true },

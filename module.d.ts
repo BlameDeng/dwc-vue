@@ -4,4 +4,3 @@ declare module "*.vue" {
   export default componentOptions;
 }
 declare module "*.json";
-declare module "dwc-icons";

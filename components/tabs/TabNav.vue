@@ -52,14 +52,14 @@ export default {
       return h(
         "div",
         {
-          className: `dwc-tab-nav ${props.tabPosition} ${props.type}`,
+          class: `dwc-tab-nav ${props.tabPosition} ${props.type}`,
           ref: tabNavEl,
         },
         props.type === "line"
           ? [
               props.renderLabels(),
               h("div", {
-                className: "dwc-tab-nav-slider",
+                class: "dwc-tab-nav-slider",
                 style: sliderStyle.value,
               }),
             ]

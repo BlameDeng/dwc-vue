@@ -27,10 +27,10 @@
 </template>
 <script lang="ts">
 import { inject, provide, computed } from "vue";
+import { Icon } from "dwc-icons";
 
 import { ClickOutside } from "../directives/ClickOutside";
 import CollapseTransition from "../collapse-transition/CollapseTransition.vue";
-import Icon from "../icon/Icon.vue";
 
 import {
   DWCMenuMode,

@@ -125,7 +125,9 @@
   </div>
 </template>
 <script lang="ts">
-import { Icon, Menu, MenuGroup, MenuItem, SubMenu } from "../../components";
+import { Icon } from "dwc-icons";
+
+import { Menu, MenuGroup, MenuItem, SubMenu } from "../../components";
 
 export default {
   name: "button-example",

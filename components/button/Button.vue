@@ -12,19 +12,19 @@
     :disabled="disabled === true || disabled === 'true'"
     :type="htmlType"
   >
-    <Icon
+    <dwc-icon
       v-if="iconName && !loading"
       :name="iconName"
       :size="iconSize"
       :style="{ marginRight: '4px' }"
-    />
-    <Icon
+    ></dwc-icon>
+    <dwc-icon
       v-if="loading === true || loading === 'true'"
       name="loading"
       :size="iconSize"
       :spinning="true"
       :style="{ marginRight: '4px' }"
-    />
+    ></dwc-icon>
     <span><slot></slot></span>
   </button>
   <a
@@ -41,11 +41,11 @@
   </a>
 </template>
 <script lang="ts">
-import Icon from "../icon/Icon.vue";
+import { Icon } from "dwc-icons";
 
 export default {
   name: "dwc-button",
-  components: { Icon },
+  components: { "dwc-icon": Icon },
   props: {
     danger: [Boolean, String],
     disabled: [Boolean, String],
