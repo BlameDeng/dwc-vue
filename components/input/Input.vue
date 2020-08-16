@@ -50,7 +50,7 @@
   </label>
 </template>
 <script lang="ts">
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { Icon } from "dwc-icons";
 
 export default {
@@ -106,6 +106,13 @@ export default {
   color: $dwc-main;
   font-size: 14px;
 
+  &.bordered {
+    > .dwc-input-el {
+      border: 1px solid;
+      border-color: $dwc-border;
+    }
+  }
+
   &.disabled {
     color: $dwc-secondary;
 
@@ -145,13 +152,6 @@ export default {
   &.large {
     height: 40px;
     font-size: 16px;
-  }
-
-  &.bordered {
-    > .dwc-input-el {
-      border: 1px solid;
-      border-color: $dwc-border;
-    }
   }
 
   &.prefix {

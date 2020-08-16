@@ -56,7 +56,8 @@ export default {
   },
   directives: { "click-outside": ClickOutside },
   props: {
-    allowClear: { type: [Boolean, String], default: true },
+    allowClear: { type: [Boolean, String], default: false },
+    defaultValue: [Number, String],
     disabled: [Boolean, String],
     dropDownClass: [String, Array, Object],
     dropDownStyle: [String, Object],
@@ -90,7 +91,7 @@ export default {
       });
     }
 
-    const current = ref<string | number>();
+    const current = ref<string | number>(props.defaultValue);
 
     const selectValue = computed(() => {
       if (props.value !== undefined) {

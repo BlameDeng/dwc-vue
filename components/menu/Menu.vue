@@ -36,6 +36,7 @@ export default {
   name: "dwc-menu",
   props: {
     defaultSelectedKey: [String, Number],
+    defaultOpenKeys: Array,
     mode: {
       type: String,
       default: "vertical",
@@ -50,7 +51,9 @@ export default {
     const menuMode = computed(() => props.mode);
 
     const selected = ref<string | number>(props.defaultSelectedKey);
-    const opened = ref<Array<string | number>>([]);
+    const opened = ref<Array<string | number>>(
+      (props.defaultOpenKeys as Array<string | number>) || []
+    );
 
     const menuSelectedKey = computed(() => {
       if (props.selectedKey !== undefined) {
@@ -117,7 +120,6 @@ export default {
 @import "../assets/var.scss";
 
 .dwc-menu {
-  width: 100%;
   list-style: none;
   margin-bottom: 0;
   font-size: 14px;

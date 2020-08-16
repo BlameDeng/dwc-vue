@@ -1,20 +1,25 @@
 <template>
   <div class="container">
-    <dwc-switch
-      v-model:value="value1"
-      :style="{ marginRight: '8px' }"
-    ></dwc-switch>
-    <dwc-switch
-      v-model:value="value2"
-      size="small"
-      :style="{ marginRight: '8px' }"
-    ></dwc-switch>
-    <dwc-switch
-      v-model:value="value3"
-      :disabled="true"
-      :style="{ marginRight: '8px' }"
-    ></dwc-switch>
-    <dwc-switch v-model:value="value4" disabled="true"></dwc-switch>
+    <h4 class="title">两种大小</h4>
+    <div class="row">
+      <dwc-switch
+        v-model:value="value1"
+        :style="{ marginRight: '8px' }"
+        size="small"
+      >
+      </dwc-switch>
+      <dwc-switch v-model:value="value2"></dwc-switch>
+    </div>
+    <h4 class="title">禁用</h4>
+    <div class="row">
+      <dwc-switch
+        v-model:value="value3"
+        :style="{ marginRight: '8px' }"
+        disabled="true"
+      >
+      </dwc-switch>
+      <dwc-switch v-model:value="value4" :disabled="true"></dwc-switch>
+    </div>
   </div>
 </template>
 <script lang="ts">

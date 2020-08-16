@@ -24,8 +24,9 @@ export default {
   name: "dwc-tabs",
   components: { TabNav },
   props: {
-    activeTabName: [Number, String],
+    activeTabName: [String, Number],
     contentStyle: [Object, String],
+    defaultActiveTabName: [String, Number],
     tabPosition: {
       type: String,
       default: "top",
@@ -51,7 +52,7 @@ export default {
       return undefined;
     };
 
-    const current = ref(getFirstTabName());
+    const current = ref(props.defaultActiveTabName || getFirstTabName());
 
     const currentTabName = computed(() => {
       if (props.activeTabName !== undefined) {

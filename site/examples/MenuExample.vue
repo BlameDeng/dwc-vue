@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h4 class="title">横向菜单</h4>
     <div class="row">
       <dwc-menu
         mode="horizontal"
@@ -69,8 +70,13 @@
         </dwc-sub-menu>
       </dwc-menu>
     </div>
+    <h4 class="title">纵向菜单</h4>
     <div class="row">
-      <dwc-menu style="width: 220px;" default-selected-key="option-1">
+      <dwc-menu
+        style="width: 220px;"
+        default-selected-key="option-1"
+        :default-open-keys="['navigation-1', 'navigation-2']"
+      >
         <dwc-menu-item value="option-1">Option 1</dwc-menu-item>
         <dwc-menu-item value="option-2" :disabled="true">
           Option 2
@@ -152,18 +158,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container {
-  width: 1000px;
-  margin: 40px auto;
-
-  .row {
-    margin-bottom: 16px;
-  }
-
-  .sub-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
+.sub-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 </style>

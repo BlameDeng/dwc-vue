@@ -21,7 +21,7 @@ import { calNodeHeight } from "../utils/calNodeHeight";
 export default {
   name: "dwc-text-area",
   props: {
-    autosize: [Boolean, String],
+    autosize: { type: [Boolean, String], default: true },
     bordered: { type: [Boolean, String], default: true },
     disabled: [Boolean, String],
     error: [Boolean, String],

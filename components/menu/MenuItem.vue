@@ -59,6 +59,8 @@ export default {
   &.horizontal {
     > .dwc-menu-item {
       &.active {
+        background-color: #fff;
+
         &::after {
           position: absolute;
           bottom: -1px;

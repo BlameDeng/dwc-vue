@@ -152,6 +152,7 @@ export default {
       &.selected {
         > .dwc-sub-menu-title {
           position: relative;
+          background-color: #fff;
 
           &::after {
             position: absolute;
